@@ -2,13 +2,14 @@ import SlimSelect from 'slim-select'
 import Notiflix from 'notiflix';
 import { fetchBreeds } from './js/cat-api.js';
 import { fetchCatByBreed } from './js/cat-api.js';
-//import Breed from './js/breed.js';
+
 
 const API = 'live_f5eYfX3pmgKDCaGa7NeHcEkXGgwKkBQl7aTEfdQBOtLNowJl1xTzfsRbey3o7dPQ'
  
 const catInfo = document.querySelector('.cat-info')
 const selector = document.querySelector(".breed-select")
 const loading = document.querySelector('.loading')
+
 selector.classList.add('is-hidden')
 loading.style.display = 'block'
 
@@ -52,14 +53,11 @@ fetchBreeds('breeds').then((breeds) => {
 
   createMarcap(breeds)
 
- selector.classList.remove('is-hidden')
+  selector.classList.remove('is-hidden')
   loading.style.display = 'none'
 })
   .catch((error) => Notiflix.Notify.failure('Oops! Something went wrong! Try reloading the page!'))
-   .finally(() => {
-     selector.style.display = 'block'
-    //  loading.style.display = 'none'
-   });
+  
 
 function createMarcap(breeds) {
  
@@ -73,7 +71,7 @@ function createMarcap(breeds) {
 
 
 function markapCatCard(breeds) {
-  //console.log(breeds.id);
+ 
   fetch(`https://api.thecatapi.com/v1/images/${breeds.id}?${API}`)
    .then((response) => {
       if (!response.ok) {
@@ -81,7 +79,6 @@ function markapCatCard(breeds) {
       }
       return response.json()
     }).then((breed) => {
-      //console.log(breed);
       const [
         id,
       ] = breed.breeds
