@@ -15,7 +15,7 @@ loading.style.display = 'block'
 
 
 Notiflix.Notify.init({
-    width: '500px',
+    width: '510px',
     position: 'left-top',
     distance: '15px',
     opacity: 1,
@@ -43,7 +43,7 @@ function getSelectedBreed(event) {
     loading.style.display = 'block'
     markapCatCard(...elem)
     })
-     .catch((error) => Notiflix.Notify.failure('Oops! Something went wrong! Try reloading the page!'));
+     .catch((error) => Notiflix.Notify.failure('Oops! Something went wrong! Try reloading the page!'))
 
   
 }
@@ -56,7 +56,9 @@ fetchBreeds('breeds').then((breeds) => {
   selector.classList.remove('is-hidden')
   loading.style.display = 'none'
 })
-  .catch((error) => Notiflix.Notify.failure('Oops! Something went wrong! Try reloading the page!'))
+  .catch((error) => Notiflix.Notify.failure('Oops! Something went wrong! Try reloading the page!')) .finally(() => {
+       loading.style.display = 'none'
+     })
   
 
 function createMarcap(breeds) {
